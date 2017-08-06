@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ed174902-4b90-42ef-94cb-a9cfceede312" name="Default" comment="" />
+    <list default="true" id="ed174902-4b90-42ef-94cb-a9cfceede312" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/Monster.xcodeproj/project.xcworkspace/xcuserdata/YuanZhan.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable.xcodeproj/project.xcworkspace/xcuserdata/YuanZhan.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/Monster.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/Monster.xcodeproj/project.pbxproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/Monster.xcodeproj/project.xcworkspace/contents.xcworkspacedata" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/Monster.xcodeproj/xcuserdata/YuanZhan.xcuserdatad/xcschemes/Monster.xcscheme" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/Monster.xcodeproj/xcuserdata/YuanZhan.xcuserdatad/xcschemes/xcschememanagement.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/Monster/AppDelegate.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/Monster/Assets.xcassets/AppIcon.appiconset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/Monster/Base.lproj/LaunchScreen.storyboard" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/Monster/Base.lproj/Main.storyboard" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/Monster/Info.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/Monster/ViewController.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/MonsterTests/Info.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/MonsterTests/MonsterTests.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/MonsterUITests/Info.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/MonsterUITests/MonsterUITests.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/Monster/Monster/ViewMonsterController.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable.xcodeproj/project.pbxproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable.xcodeproj/project.xcworkspace/contents.xcworkspacedata" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable.xcodeproj/xcuserdata/YuanZhan.xcuserdatad/xcschemes/UITable.xcscheme" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable.xcodeproj/xcuserdata/YuanZhan.xcuserdatad/xcschemes/xcschememanagement.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable/AddMonsterController.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable/AppDelegate.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable/Assets.xcassets/AppIcon.appiconset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable/Base.lproj/LaunchScreen.storyboard" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable/Base.lproj/Main.storyboard" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable/Info.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable/Monster.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable/MonsterCell.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable/ParytListController.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITable/ViewController.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITableTests/Info.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITableTests/UITableTests.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITableUITests/Info.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FIT5140 Code/UITable/UITable/UITableUITests/UITableUITests.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/week2/tutorial.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FIT5140 Code/HelloWorld/UITableView/Week04/Week04.xcodeproj/project.xcworkspace/xcuserdata/YuanZhan.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../FIT5140 Code/HelloWorld/UITableView/Week04/Week04.xcodeproj/project.xcworkspace/xcuserdata/YuanZhan.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,11 +52,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="introductoryTest.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="introductoryTest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/week1/introductoryTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="53" column="16" lean-forward="true" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
+            <state relative-caret-position="1140">
+              <caret line="76" column="28" lean-forward="false" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tutorial.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/week2/tutorial.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1298">
+              <caret line="133" column="15" lean-forward="true" selection-start-line="133" selection-start-column="15" selection-end-line="133" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -39,16 +89,19 @@
       <list>
         <option value="$PROJECT_DIR$/Week1.py" />
         <option value="$PROJECT_DIR$/week1/introductoryTest.py" />
+        <option value="$PROJECT_DIR$/week2/tutorial.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="51" />
+    <option name="x" value="58" />
     <option name="y" value="22" />
     <option name="width" value="1382" />
     <option name="height" value="859" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -64,8 +117,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -77,9 +128,29 @@
               <option name="myItemId" value="FIT5211 Algorithm Code" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="week2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FIT5211 Algorithm Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FIT5211 Algorithm Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="week1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -97,7 +168,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.introductoryTest">
+  <component name="RunManager" selected="Python.tutorial">
     <configuration default="false" name="Week1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -129,6 +200,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="FIT5211 Algorithm Code" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/week1/introductoryTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="tutorial" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/week2" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="FIT5211 Algorithm Code" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/week2/tutorial.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -198,14 +287,16 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.Week1" />
       <item index="1" class="java.lang.String" itemvalue="Python.introductoryTest" />
+      <item index="2" class="java.lang.String" itemvalue="Python.tutorial" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.introductoryTest" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Week1" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python.tutorial" />
+        <item index="1" class="java.lang.String" itemvalue="Python.introductoryTest" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Week1" />
       </list>
     </recent_temporary>
   </component>
@@ -223,12 +314,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="51" y="22" width="1382" height="859" extended-state="0" />
+    <frame x="58" y="22" width="1382" height="859" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2496382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20253165" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -269,30 +360,50 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Week1.py">
+    <entry file="file://$PROJECT_DIR$/week1/introductoryTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1140">
+          <caret line="76" column="28" lean-forward="false" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Week1.py">
+    <entry file="file://$PROJECT_DIR$/week2/tutorial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1245">
+          <caret line="83" column="21" lean-forward="false" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/week1/introductoryTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="53" column="16" lean-forward="true" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week1.py" />
+    <entry file="file://$PROJECT_DIR$/Week1.py" />
+    <entry file="file://$PROJECT_DIR$/week1/introductoryTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="76" column="28" lean-forward="false" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/week2/tutorial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1298">
+          <caret line="133" column="15" lean-forward="true" selection-start-line="133" selection-start-column="15" selection-end-line="133" selection-end-column="15" />
           <folding />
         </state>
       </provider>
