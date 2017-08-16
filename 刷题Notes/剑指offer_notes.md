@@ -202,29 +202,29 @@
 
 10. 给定一个double类型的浮点数base和int类型的整数exponent，求base的exponent次方。
 
-   ```java
-   public class Solution {
-       public double Power(double base, int exponent) {
-           double res = 1; // 注意定义的数据类型，如果是int会返回0
-           
-           if (base == 0 && exponent < 0){
-             	// 考虑base是0，而exp是负数的情况，这里，0不能为分母
-               throw new RuntimeException("分母不能为0");
-           }
-           
-           for (int i = 0; i < Math.abs(exponent); i++){
-               res *= base;
-           }
-           
-         	// 考虑exp是正还是负数的情况，决定返回的值是分数or what
-           if (exponent < 0) {
-               return 1 / res;
-           } else {
-               return res;
-           }
-     }
-   }
-   ```
+  ```java
+  public class Solution {
+      public double Power(double base, int exponent) {
+          double res = 1; // 注意定义的数据类型，如果是int会返回0
+          
+          if (base == 0 && exponent < 0){
+            	// 考虑base是0，而exp是负数的情况，这里，0不能为分母
+              throw new RuntimeException("分母不能为0");
+          }
+          
+          for (int i = 0; i < Math.abs(exponent); i++){
+              res *= base;
+          }
+          
+        	// 考虑exp是正还是负数的情况，决定返回的值是分数or what
+          if (exponent < 0) {
+              return 1 / res;
+          } else {
+              return res;
+          }
+    }
+  }
+  ```
 
 11. 输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。
 
@@ -267,4 +267,238 @@
     }
     ```
 
-12. ​
+12. 输入一个链表，反转链表后，输出链表的所有元素。
+
+    ```java
+    public class Solution {
+        public ListNode ReverseList(ListNode head) {
+          	// 首先，是对异常情况的处理，如果输入为空，那么返回空
+            if (head == null) {
+                return null;
+            }
+          	// 定义head节点的pre和next节点，先初始化为空
+            ListNode pre = null;
+            ListNode next = null;
+            
+          	// 循环操作，直至当前节点为空
+            while (head != null) {
+              	// 先将当前节点的写一个节点存储在next中
+                next = head.next;
+              	// 将当前节点的下个节点设置为当前节点的前一个节点，以达到反转的目的
+                head.next = pre;
+              	// 因为要一直进行下去，则将pre这个节点的值，设定为head，在下一次执行上一步赋值操作的时候，将下一个节点的前一个节点设置为当前节点
+                pre = head;
+              	// 这里就是将当前节点设置为下一个节点，即往链表的下一个节点推进了一步
+                head = next;
+            }
+            // 跳出循环的时候，当前节点已经为空，所以应该返回的是当前节点的前一个节点，即pre
+            return pre;
+        }
+    }
+    ```
+
+13. 输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。
+
+    ```java
+    // 递归版本
+    public class Solution {
+        public ListNode Merge(ListNode list1,ListNode list2) {
+            if (list1 == null) {
+                return list2;
+            }
+            
+            if (list2 == null) {
+                return list1;
+            }
+            
+            if (list1.val <= list2.val) {
+                list1.next = Merge(list1.next, list2);
+                return list1;
+            } else {
+                list2.next = Merge(list1, list2.next);
+                return list2;
+            }
+        }
+    }
+
+    // 非递归版本
+    public class Solution {
+        public ListNode Merge(ListNode list1,ListNode list2) {
+          	// 异常情况处理，如果两个list中有一个是空，则返回另一个list
+            if (list1 == null) {
+                return list2;
+            }
+            if (list2 == null) {
+                return list1;
+            }
+            
+          	// 定义要返回的结果和当前节点
+            ListNode res = null;
+            ListNode current = null;
+            
+          	// 在两个list都不为空的情况下，进行val的对比
+            while (list1 != null && list2 != null) {
+                if (list1.val <= list2.val) {
+                    if (res == null) {
+                      	// 如果当前res为空，则说明刚刚开始循环，将头节点设置为res
+                        res = current = list1;
+                    } else {
+                      	// 否则，在之后添加next
+                        current.next = list1;
+                        current = current.next;
+                    }
+                    list1 = list1.next;
+                } else {
+                    if (res == null) {
+                        res = current = list2;
+                    } else {
+                        current.next = list2;
+                        current = current.next;
+                    }
+                    list2 = list2.next;
+                }
+            }
+            
+          	// 找到跳出循环的原因，如果是list1先为空，那么直接将list2添加在res后面即可，否则添加list1
+            if (list1 == null) {
+                current.next = list2;
+            } else {
+                current.next = list1;
+            }
+            
+            return res;
+        }
+    }
+    ```
+
+14. 输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
+
+    ```java
+    public class Solution {
+        public boolean HasSubtree(TreeNode root1,TreeNode root2) {
+            if (root2 == null) {
+                return false;
+            }
+            
+            if (root1 == null) {
+                return false;
+            }
+            
+            boolean flag = false;
+            
+            if (root1.val == root2.val) {
+                flag = isSubTree(root1, root2);
+            }
+            
+            if (!flag) {
+                flag = HasSubtree(root1.left, root2);
+                if (!flag) {
+                    flag = HasSubtree(root1.right, root2);
+                }
+            }
+            
+            return flag;
+        }
+        
+        private boolean isSubTree(TreeNode r1, TreeNode r2) {
+            if (r2 == null) {
+                return true;
+            }
+            
+            if (r1 == null) {
+                return false;
+            }
+            
+            if (r1.val != r2.val) {
+                return false;
+            }
+            return isSubTree(r1.left, r2.left) && isSubTree(r1.right, r2.right);
+        }
+    }
+    ```
+
+15. 输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.
+
+    ```java
+    import java.util.ArrayList;
+    public class Solution {
+        public ArrayList<Integer> printMatrix(int [][] matrix) {
+           ArrayList<Integer> res = new ArrayList<>();
+            
+            int n = matrix.length;
+            int m = matrix[0].length;
+            
+            if (m == 0 || n == 0) {
+                return null;
+            }
+            
+            int layers = (Math.min(n, m) - 1) / 2 + 1;
+            for(int i=0; i < layers; i++){
+                
+                for(int k = i; k < m - i; k++) {
+                    res.add(matrix[i][k]);
+                }
+                for(int j = i + 1; j < n - i; j++) {
+                    res.add(matrix[j][m - i - 1]);
+                }
+                for(int k = m - i - 2; (k >= i) && (n - i - 1 != i); k--) {
+                    res.add(matrix[n - i - 1][k]);
+                }
+                for(int j = n - i - 2;(j > i) && (m - i - 1 != i); j--) {
+                    res.add(matrix[j][i]);
+                }
+            }
+            
+            return res;
+        }
+    }
+    ```
+
+16. 定义栈的数据结构，请在该类型中实现一个能够得到栈最小元素的min函数。
+
+    ```java
+    import java.util.Stack;
+
+    public class Solution {
+
+        Stack<Integer> data = new Stack<>();
+        Stack<Integer> min = new Stack<>();
+        
+        Integer preAddNode = null;
+        public void push(int node) {
+            if (preAddNode != null) {
+                if (node <= preAddNode) {
+                    preAddNode = node;
+                    min.push(node);
+                }
+                data.push(node);
+            } else {
+                preAddNode = node;
+                data.push(node);
+                min.push(node);
+            }
+        }
+        
+        public void pop() {
+            int num1 = data.pop();
+            int num2 = min.pop();
+            if (num1 != num2) {
+                min.push(num2);
+            }
+        }
+        
+        public int top() {
+            int topNode = data.pop();
+            data.push(topNode);
+            return topNode;
+        }
+        
+        public int min() {
+            int minNode = min.pop();
+            min.push(minNode);
+            return minNode;
+        }
+    }
+    ```
+
+17. ​
