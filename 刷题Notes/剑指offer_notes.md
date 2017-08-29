@@ -202,29 +202,29 @@
 
 10. 给定一个double类型的浮点数base和int类型的整数exponent，求base的exponent次方。
 
-  ```java
-  public class Solution {
-      public double Power(double base, int exponent) {
-          double res = 1; // 注意定义的数据类型，如果是int会返回0
-          
-          if (base == 0 && exponent < 0){
-            	// 考虑base是0，而exp是负数的情况，这里，0不能为分母
-              throw new RuntimeException("分母不能为0");
-          }
-          
-          for (int i = 0; i < Math.abs(exponent); i++){
-              res *= base;
-          }
-          
-        	// 考虑exp是正还是负数的情况，决定返回的值是分数or what
-          if (exponent < 0) {
-              return 1 / res;
-          } else {
-              return res;
-          }
-    }
-  }
-  ```
+ ```java
+ public class Solution {
+     public double Power(double base, int exponent) {
+         double res = 1; // 注意定义的数据类型，如果是int会返回0
+         
+         if (base == 0 && exponent < 0){
+           	// 考虑base是0，而exp是负数的情况，这里，0不能为分母
+             throw new RuntimeException("分母不能为0");
+         }
+         
+         for (int i = 0; i < Math.abs(exponent); i++){
+             res *= base;
+         }
+         
+       	// 考虑exp是正还是负数的情况，决定返回的值是分数or what
+         if (exponent < 0) {
+             return 1 / res;
+         } else {
+             return res;
+         }
+   }
+ }
+ ```
 
 11. 输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。
 
@@ -501,4 +501,58 @@
     }
     ```
 
-17. ​
+17. 输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针指向任意一个节点），返回结果为复制后复杂链表的head。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）
+
+    ```java
+    /*
+    public class RandomListNode {
+        int label;
+        RandomListNode next = null;
+        RandomListNode random = null;
+
+        RandomListNode(int label) {
+            this.label = label;
+        }
+    }
+    */
+    public class Solution {
+        public RandomListNode Clone(RandomListNode pHead)
+        {
+            if (pHead == null){
+                return null;
+            }
+            RandomListNode pCur = pHead;
+            
+            while (pCur != null) {
+                RandomListNode temp = new RandomListNode(pCur.label);
+                temp.next = pCur.next;
+                pCur.next = temp;
+                pCur = temp.next;
+            }
+            pCur = pHead;
+            
+            while (pCur != null) {
+                if (pCur.random != null) {
+                    pCur.next.random = pCur.random.next;
+                }
+                pCur = pCur.next.next;
+            }
+            
+            RandomListNode head = pHead.next;
+            RandomListNode cur = head;
+            pCur = pHead;
+            while (pCur != null) {
+                pCur.next = pCur.next.next;
+                if (cur.next != null){
+                    cur.next = cur.next.next;
+                }
+                pCur = pCur.next;
+                cur = cur.next;
+            }
+            
+            return head;
+        }
+    }
+    ```
+
+18. ​
