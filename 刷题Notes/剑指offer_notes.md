@@ -750,4 +750,34 @@
     }
     ```
 
-24. ​
+24. 输入一颗二叉树和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。
+
+    ```java
+    public class Solution {
+      // 定义将要返回的存放路径的arraylist，每一条路径都以arraylist的形式存在，所以结果应该是一个集合的集合
+        private ArrayList<ArrayList<Integer>> listAll = new ArrayList<>(); 
+        private ArrayList<Integer> list = new ArrayList<>(); 
+        
+        public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) { 
+          // 如果根节点是空，返回空的集合
+            if(root == null) {
+                return listAll; 
+            }
+            
+            list.add(root.val); 
+            target -= root.val; 
+          // 满足条件的情况是，target为0，当前节点是leaf node，若以上为true，则添加该条路径
+            if(target == 0 && root.left == null && root.right == null) {
+                listAll.add(new ArrayList<Integer>(list)); 
+            }
+          // 递归进行同样的操作，此时的target已经是去除了根节点的val后的值
+            FindPath(root.left, target); 
+            FindPath(root.right, target); 
+          // 回退一个node，这里强行记忆吧
+            list.remove(list.size() - 1); 
+            return listAll; 
+        }
+    }
+    ```
+
+25. ​
