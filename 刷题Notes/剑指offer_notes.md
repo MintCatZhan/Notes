@@ -555,4 +555,199 @@
     }
     ```
 
-18. ​
+18. ​输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。
+
+    ```java
+    // 1. 先序遍历的第一个位置一定是根节点 root
+    // 2. 中序遍历的根节点位置在p，在p左边的节点都是root左子树的中序遍历数组，右边同理
+    // 3. 先序遍历的第二个位置到p之间(闭区间)一定是root左子树的先序遍历，右边同理
+    // 4. 四个数组摘出来，分左右递归
+    public class Solution {
+        public TreeNode reConstructBinaryTree(int [] pre,int [] in) {
+            TreeNode res = reCon(pre, 0, pre.length - 1, in, 0, in.length - 1);
+            return res;
+        }
+        
+        private TreeNode reCon(int[] pre, int preStart,int preEnd, 
+                               int[] in, int inStart, int inEnd){
+            if (preStart > preEnd || inStart > inEnd) {
+                return null;
+            }
+            
+            TreeNode root = new TreeNode(pre[preStart]);
+            
+            for (int i = inStart; i <= inEnd; i++ ){
+                if (in[i] == pre[preStart]) {
+                    root.left = reCon(pre, preStart + 1, preStart + i - inStart,
+                                     in, inStart, i - 1);
+                    root.right = reCon(pre, preStart + i + 1 - inStart, preEnd,
+                                      in, i + 1, inEnd);
+                }
+            }
+            return root;
+        }
+    }
+    ```
+
+19. 操作给定的二叉树，将其变换为源二叉树的镜像
+
+    ```java
+    // 先前序遍历这棵树的每个结点，如果遍历到的结点有子结点，就交换它的两个子节点，
+    // 当交换完所有的非叶子结点的左右子结点之后，就得到了树的镜像
+    // 递归的解法
+    public class Solution {
+        public void Mirror(TreeNode root) {
+          // 最开始的base case
+            if (root == null) {
+                return;
+            }
+            
+          // 运行中的base case，如果节点没有任何子节点，结束
+            if (root.left == null && root.right == null) {
+                return;
+            }
+           
+          // 交换给定节点的左右子节点，如有一个为空也没有关系
+            TreeNode temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+            
+          // 如果该节点有左或者右子节点，递归交换其左或者右子节点的，子代节点的位置
+            if (root.left != null) {
+                Mirror(root.left);
+            }
+            if (root.right != null) {
+                Mirror(root.right);
+            }
+        }
+    }
+    ```
+
+20. 输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如序列1,2,3,4,5是某栈的压入顺序，序列4，5,3,2,1是该压栈序列对应的一个弹出序列，但4,3,5,1,2就不可能是该压栈序列的弹出序列。（注意：这两个序列的长度是相等的）
+
+    ```java
+    /**
+    【思路】借用一个辅助的栈，遍历压栈顺序，先讲第一个放入栈中，这里是1，然后判断栈顶元素是不是出栈顺序的第一个元素，这里是4，很显然1≠4，所以我们继续压栈，直到相等以后开始出栈，出栈一个元素，则将出栈顺序向后移动一位，直到不相等，这样循环等压栈顺序遍历完成，如果辅助栈还不为空，说明弹出序列不是该栈的弹出顺序。
+    举例：
+    入栈1,2,3,4,5
+    出栈4,5,3,2,1
+    首先1入辅助栈，此时栈顶1≠4，继续入栈2
+    此时栈顶2≠4，继续入栈3
+    此时栈顶3≠4，继续入栈4
+    此时栈顶4＝4，出栈4，弹出序列向后一位，此时为5，,辅助栈里面是1,2,3
+    此时栈顶3≠5，继续入栈5
+    此时栈顶5=5，出栈5,弹出序列向后一位，此时为3，,辅助栈里面是1,2,3
+    ….
+    依次执行，最后辅助栈为空。如果不为空说明弹出序列不是该栈的弹出顺序。
+    **/
+    import java.util.Stack;
+
+    public class Solution {
+        public boolean IsPopOrder(int [] pushA,int [] popA) {
+          // 若给定的数组为空，返回false
+            if (pushA.length == 0 || popA.length == 0) {
+                return false;
+            }
+          // 引入辅助栈用于判断
+            Stack<Integer> s = new Stack<>();
+          // popA的弹出index
+            int index = 0;
+            for (int i = 0; i < pushA.length; i++){
+                s.push(pushA[i]);
+                while (!s.empty() && s.peek() == popA[index]) {
+                    s.pop(); // 辅助栈弹出
+                    index++; // 弹出index自增
+                }
+            }
+            return s.empty();
+        }
+    }
+    ```
+
+21.  从上往下打印出二叉树的每个节点，同层节点从左至右打印。 （所谓广度优先 BFS）
+
+    ```java
+    public class Solution {
+        public ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
+            ArrayList<TreeNode> listNode = new ArrayList<>();
+            ArrayList<Integer> listVal = new ArrayList<>();
+            if (root == null) {
+                return listVal;
+            }
+            listNode.add(root);
+            listVal.add(root.val);
+          // 此处，虽然一开始size为1， 但是在循环体的内部，随着需要，会扩大listNode的size，
+          // 所以这里的循环会一直持续到遍历完所有的node为止
+            for (int i = 0; i < listNode.size(); i++) {
+                TreeNode node = listNode.get(i);
+                if (node.left != null) {
+                    listNode.add(node.left);
+                    listVal.add(node.left.val);
+                }
+                if (node.right != null) {
+                    listNode.add(node.right);
+                    listVal.add(node.right.val);
+                }
+            }
+            
+            return listVal;
+        }
+    }
+    ```
+
+22. 输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。
+
+    ```java
+    public class Solution {
+        public boolean VerifySquenceOfBST(int [] sequence) {
+            if (sequence.length == 0 || sequence == null) {
+                return false;
+            }
+            if (sequence.length == 1) {
+                return true;
+            }
+            return verBST(sequence, 0, sequence.length - 1);
+        }
+        public boolean verBST(int[] a, int start, int end) {
+            if (start >= end) {
+                return true;
+            }
+            int i = end;
+            while (i > start && a[i - 1] > a[end]) {
+                i--;
+            }
+            for (int j = start; j < i - 1; j++) {
+                if (a[j] > a[end]) {
+                    return false;
+                }
+            }
+            return verBST(a, start, i - 1) && verBST(a, i, end - 1);
+        }
+    }
+    ```
+
+23. 输入一颗二叉树和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。
+
+    ```java
+    public class Solution {
+        private ArrayList<ArrayList<Integer>> listAll = new ArrayList<ArrayList<Integer>>(); 
+        private ArrayList<Integer> list = new ArrayList<Integer>(); 
+        
+        public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) { 
+            if(root == null) {
+                return listAll; 
+            }
+            
+            list.add(root.val); 
+            target -= root.val; 
+            if(target == 0 && root.left == null && root.right == null) {
+                listAll.add(new ArrayList<Integer>(list)); 
+            }
+            FindPath(root.left, target); 
+            FindPath(root.right, target); 
+            list.remove(list.size()-1); 
+            return listAll; }
+    }
+    ```
+
+24. ​
