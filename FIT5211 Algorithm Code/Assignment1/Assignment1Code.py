@@ -51,20 +51,14 @@ class PointSet:
             result[1] = tempPoint
             return result
 
-
         dmin = sys.maxsize
-        i = 0
-        while i < len(l) - 1:
-            j = i + 1
-            while j < len(l):
+        for i in range(len(l) - 1):
+            for j in range(i + 1, len(l)):
                 tmpmin = l[i].distance_Manhattan(l[j])
-                if tmpmin < dmin:
+                if tmpmin < dmin and tmpmin != 0:
                     dmin = tmpmin
                     result[0] = l[i]
                     result[1] = l[j]
-                j = j + 1
-            i = i + 1
-
         return result
 
     # question 3b, divide-and-conquer algorithm
@@ -103,10 +97,13 @@ class PointSet:
             dist1 = leftResult[0].distance_Manhattan(leftResult[1])
             dist2 = rightResult[0].distance_Manhattan(rightResult[1])
 
-            if dist1 < dist2:
+            minDist = sys.maxsize
+            result = [None] * 2
+
+            if dist1 <= dist2 and dist1 != 0:
                 minDist = dist1
                 result = leftResult
-            else:
+            if dist1 > dist2 and dist2 != 0:
                 minDist = dist2
                 result = rightResult
 
@@ -136,25 +133,46 @@ class PointSet:
                                 result[1] = midList[i + j]
             return result
 
-
-
-
-ps = PointSet()
-ll = []
-for i in range(2000):
-    p = Point()
-    p.x = random.randint(1,2017)
-    p.y = random.randint(1,2017)
-    print("adding points:", p.x, "y: ", p.y)
-    ll.append(p)
-ps.items = ll
-print("setted ps.items")
-# r = ps.closetPointBF(ps.items)
-r = ps.closePairOfPointsDandC(ps.items)
-print("bf closet: p1x--> ", r[0].x, "p1.y-->", r[0].y, "p2.x-->",r[1].x, "p2.y-->", r[1].y)
 # You can increment the stack depth allowed - with this, deeper recursive calls will be possible, like this:
 #
 # import sys
 # sys.setrecursionlimit(10000) # 10000 is an example, try with different values
 #
 # But I'd advise you to first try to optimize your code, for instance, using iteration instead of recursion.
+
+# plt.plot(xAxis, yAxis, 'ro')
+# plt.title('Manhattan Distance')
+# plt.xlabel('x')
+# plt.ylabel('y')
+# plt.axis([0, 100, 0, 100])
+# plt.show()
+
+
+
+# #### ****** if 2 points have totally same X and Y axis, seem them as one point
+def test():
+    ps = PointSet()
+    ll = []
+    xAxis = []
+    yAxis = []
+    for i in range(2000):
+        p = Point()
+        p.x = random.randint(1, 2000)
+        p.y = random.randint(1, 2000)
+        xAxis.append(p.x)
+        yAxis.append(p.y)
+        # print("adding points:", p.x, "y: ", p.y)
+        ll.append(p)
+    ps.items = ll
+    print("setted ps.items")
+    # r = ps.closetPointBF(ps.items)
+    r = ps.closePairOfPointsDandC(ps.items)
+    print("bf closet: p1x--> ", r[0].x, "p1.y-->", r[0].y, "p2.x-->", r[1].x, "p2.y-->", r[1].y)
+
+if __name__=='__main__':
+    from timeit import Timer
+    t = Timer(lambda: test())
+    print(t.timeit(number=100))
+
+# 1. how to use timeit, cuz there are some self-defined classes are going to be used in the timeit stmt
+# 2. about the runtime recurrence relation, cuz im using the build-in func, that is "sorted" func, how to evaluate its relation ???how can i know this??
