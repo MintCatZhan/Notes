@@ -1,10 +1,11 @@
 from math import *
 import sys
+sys.setrecursionlimit(100000)
 import random
 
 # question 1 point ADT class with an added method of return Manhattan distance
-class Point:
-    def __int__(self, x, y):
+class Point(object):
+    def __init__(self, x, y):
         self.x = x
         self.y = y
 
@@ -30,24 +31,22 @@ class Point:
 
 
 # question 2 point set ADT class
-class PointSet:
-    def __int__(self, list):
-        self.items = set(list)
+class PointSet(object):
+    def __init__(self):
+        self.items = []
 
     def insert(self, x):
-        self.items.add(x)
+        self.items.append(x)
 
     def delete(self, x):
         self.items.remove(x)
 
-    # (BF)
+    # question 3.a brute-force
     def closetPointBF(self, l):
         result = [None] * 2
         if len(l) < 2:
             result[0] = l[0]
-            tempPoint = Point()
-            tempPoint.x = sys.maxsize
-            tempPoint.y = sys.maxsize
+            tempPoint = Point(sys.maxsize, sys.maxsize)
             result[1] = tempPoint
             return result
 
@@ -147,32 +146,44 @@ class PointSet:
 # plt.axis([0, 100, 0, 100])
 # plt.show()
 
+p = Point(1,2)
+p2 = Point(2,3)
+ps = PointSet()
+print(len(ps.items), "")
+ps.insert(p)
+print(len(ps.items), "")
+ps.insert(p2)
+print(len(ps.items), "")
+ps.delete(p)
+print(len(ps.items), "")
 
 
-# #### ****** if 2 points have totally same X and Y axis, seem them as one point
-def test():
-    ps = PointSet()
-    ll = []
-    xAxis = []
-    yAxis = []
-    for i in range(2000):
-        p = Point()
-        p.x = random.randint(1, 2000)
-        p.y = random.randint(1, 2000)
-        xAxis.append(p.x)
-        yAxis.append(p.y)
-        # print("adding points:", p.x, "y: ", p.y)
-        ll.append(p)
-    ps.items = ll
-    print("setted ps.items")
-    # r = ps.closetPointBF(ps.items)
-    r = ps.closePairOfPointsDandC(ps.items)
-    print("bf closet: p1x--> ", r[0].x, "p1.y-->", r[0].y, "p2.x-->", r[1].x, "p2.y-->", r[1].y)
-
-if __name__=='__main__':
-    from timeit import Timer
-    t = Timer(lambda: test())
-    print(t.timeit(number=100))
+# # #### ****** if 2 points have totally same X and Y axis, seem them as one point
+# def test(numOfPoints):
+#     ps = PointSet()
+#     ll = []
+#     xAxis = []
+#     yAxis = []
+#     for i in range(numOfPoints):
+#         p = Point()
+#         p.x = random.randint(1, 2000)
+#         p.y = random.randint(1, 2000)
+#         xAxis.append(p.x)
+#         yAxis.append(p.y)
+#         # print("adding points:", p.x, "y: ", p.y)
+#         ll.append(p)
+#     ps.items = ll
+#     print("setted ps.items")
+#     # r = ps.closetPointBF(ps.items)
+#     r = ps.closePairOfPointsDandC(ps.items)
+#     # print("bf closet: p1x--> ", r[0].x, "p1.y-->", r[0].y, "p2.x-->", r[1].x, "p2.y-->", r[1].y)
+#
+# if __name__=='__main__':
+#     from timeit import Timer
+#     numOfPoints = 1000
+#     for numOfPoints in range(10, 1000, 10):
+#         t = Timer(lambda: test(numOfPoints))
+#         print(t.timeit(number=1))
 
 # 1. how to use timeit, cuz there are some self-defined classes are going to be used in the timeit stmt
 # 2. about the runtime recurrence relation, cuz im using the build-in func, that is "sorted" func, how to evaluate its relation ???how can i know this??
