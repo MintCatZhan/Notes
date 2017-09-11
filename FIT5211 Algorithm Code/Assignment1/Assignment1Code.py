@@ -1,10 +1,11 @@
 from math import *
 import sys
-sys.setrecursionlimit(100000)
 import random
+import timeit
+import matplotlib.pyplot as plt
+from timeit import Timer
 
-# question 1 point ADT class with an added method of return Manhattan distance
-class Point(object):
+class Point:
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -29,9 +30,7 @@ class Point(object):
     def distance_Manhattan(self, other):
         return abs(self.x - other.x) + abs(self.y - other.y)
 
-
-# question 2 point set ADT class
-class PointSet(object):
+class PointSet:
     def __init__(self):
         self.items = []
 
@@ -40,6 +39,12 @@ class PointSet(object):
 
     def delete(self, x):
         self.items.remove(x)
+
+    def __str__(self):
+        content = ""
+        for i in self.items:
+            content = content + str(i)
+        return content
 
     # question 3.a brute-force
     def closetPointBF(self, l):
@@ -60,16 +65,15 @@ class PointSet(object):
                     result[1] = l[j]
         return result
 
-    # question 3b, divide-and-conquer algorithm
-    # return the pair of points which have smallest pairwise distance
+    # question 3.b divide-and-conquer
     def closePairOfPointsDandC(self, l):
         # brute force if the num of points is not much
         if len(l) <= 10:
             return self.closetPointBF(l)
         else:
             # get the mid point of all points by their Xs
-            minX = sys.maxsize # initial min X big enough
-            maxX = -sys.maxsize - 1 # initial max X small enough
+            minX = sys.maxsize  # initial min X big enough
+            maxX = -sys.maxsize - 1  # initial max X small enough
             for p in l:
                 if p.x < minX:
                     minX = p.x
@@ -86,8 +90,8 @@ class PointSet(object):
                 if point.x > midX:
                     rightList.append(point)
 
-            sorted(leftList,key = lambda p:p.x)
-            sorted(rightList, key = lambda p: p.x)
+            sorted(leftList, key=lambda p: p.x)
+            sorted(rightList, key=lambda p: p.x)
 
             # get the pair of points that are closest from left half and right half
             leftResult = self.closePairOfPointsDandC(leftList)
@@ -113,77 +117,28 @@ class PointSet(object):
             for point in rightList:
                 if point.x - midX < minDist:
                     midList.append(point)
-            sorted(midList, key = lambda p:p.y)
+            sorted(midList, key=lambda p: p.y)
 
             # get possible pair of points from leftMidLineList and rightMidLineList
-            if len(midList) < 10 and len(midList) >= 2:
-                if midList[0].distance_Manhattan(midList[1]) < minDist \
-                        and midList[0].distance_Manhattan(midList[1]) != 0:
-                    result = midList
-            else:
-                for i in range(len(midList) - 7):
-                    for j in range(1, 8):
-                        if i + j >= len(midList):
-                            break
-                        else:
-                            tempd = midList[i].distance_Manhattan(midList[i + j])
-                            if tempd < minDist and tempd != 0:
-                                result[0] = midList[i]
-                                result[1] = midList[i + j]
+            for i in range(len(midList) - 7):
+                for j in range(1, 8):
+                    if i + j >= len(midList):
+                        break
+                    else:
+                        tempd = midList[i].distance_Manhattan(midList[i + j])
+                        if tempd < minDist and tempd != 0:
+                            result[0] = midList[i]
+                            result[1] = midList[i + j]
             return result
 
-# You can increment the stack depth allowed - with this, deeper recursive calls will be possible, like this:
-#
-# import sys
-# sys.setrecursionlimit(10000) # 10000 is an example, try with different values
-#
-# But I'd advise you to first try to optimize your code, for instance, using iteration instead of recursion.
+def testBF():
+    ps = PointSet()
+    for i in range(1000):
+        p = Point(random.randint(1, 2000), random.randint(1, 2000))
+        ps.insert(p)
+    r = ps.closePairOfPointsDandC(ps.items)
+    print(r[0], '', r[1])
 
-# plt.plot(xAxis, yAxis, 'ro')
-# plt.title('Manhattan Distance')
-# plt.xlabel('x')
-# plt.ylabel('y')
-# plt.axis([0, 100, 0, 100])
-# plt.show()
-
-p = Point(1,2)
-p2 = Point(2,3)
-ps = PointSet()
-print(len(ps.items), "")
-ps.insert(p)
-print(len(ps.items), "")
-ps.insert(p2)
-print(len(ps.items), "")
-ps.delete(p)
-print(len(ps.items), "")
-
-
-# # #### ****** if 2 points have totally same X and Y axis, seem them as one point
-# def test(numOfPoints):
-#     ps = PointSet()
-#     ll = []
-#     xAxis = []
-#     yAxis = []
-#     for i in range(numOfPoints):
-#         p = Point()
-#         p.x = random.randint(1, 2000)
-#         p.y = random.randint(1, 2000)
-#         xAxis.append(p.x)
-#         yAxis.append(p.y)
-#         # print("adding points:", p.x, "y: ", p.y)
-#         ll.append(p)
-#     ps.items = ll
-#     print("setted ps.items")
-#     # r = ps.closetPointBF(ps.items)
-#     r = ps.closePairOfPointsDandC(ps.items)
-#     # print("bf closet: p1x--> ", r[0].x, "p1.y-->", r[0].y, "p2.x-->", r[1].x, "p2.y-->", r[1].y)
-#
-# if __name__=='__main__':
-#     from timeit import Timer
-#     numOfPoints = 1000
-#     for numOfPoints in range(10, 1000, 10):
-#         t = Timer(lambda: test(numOfPoints))
-#         print(t.timeit(number=1))
-
-# 1. how to use timeit, cuz there are some self-defined classes are going to be used in the timeit stmt
-# 2. about the runtime recurrence relation, cuz im using the build-in func, that is "sorted" func, how to evaluate its relation ???how can i know this??
+if __name__=='__main__':
+    from timeit import Timer
+    tBF = Timer(lambda: testBF()).timeit(number=10000)
