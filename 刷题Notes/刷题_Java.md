@@ -149,7 +149,7 @@
 
     **2、负数绝对值的补码（也就是原码），按位取反（含符号位），加1**
 
-15. 关于Volatile：
+15. 关于Volatile:
 
     {0}. 一旦一个共享变量（类的成员变量、类的静态成员变量）被volatile修饰之后，就具备了两层语义:
        {0}. 保证了不同线程对这个变量操作时的可见性，即一个线程修改了某个变量的值，这个新的值对于其他线程来说是立即可见的
@@ -162,17 +162,17 @@
 
 17. 在调用子类构造器之前，会先调用父类构造器，当子类构造器中没有使用super(参数或者无参数)来显式地指定调用父类构造器的时候，是默认调用父类的无参构造器，如果父类中含有带参构造器，却没有无参构造器，那么在子类构造器中一定要使用super(参数)来指定调用父类的带参构造器，负责会报错。
 
-18. Servlet: 
+18. Servlet:
 
     {0}. getParameter()获取POST/GET传递的参数值
     {0}. getInitParameter获取Tomcat的server.xml中设置Context的初始化参数
     {0}. getAttribute()是获取对象容器中的数据值
     {0}. getRequestDispatcher请求转发
 
-19. ArrayList和LinkedList：
+19. ArrayList和LinkedList
 
     {0}. **ArrayList是实现了基于动态数组的数据结构，LinkedLists是基于链表的数据结构**：这里的动态数组并非是“有多少元素就申请多少空间”，而是，如果没有指定数组的大小，则默认申请大小为10的数组，当元素的个数增加，数组无法存储的时候，系统就会另外再申请一个长度为当前长度1.5倍的数组，然后，将之前的数据拷贝到新建的数组
-    {0}. **对于随机访问get和set，ArrayList觉得优先于LinkedList，因为Linkedlist需要移动指针**：ArrayList是数组，所以，直接定位到相应的位置来获取元素，而LinkedList是链表，需要从前往后遍历。
+    {0}. **对于随机访问get和set，ArrayList觉得优先于LinkedList，因为Linkedlist需要移动指针**：ArrayList是数组，所以，直接定位到相应的位置来获取元素，而LinkedList是链表，需要从前往后遍历
     {0}. **对于新增和删除操作，add和remove，LinkedList比较占优势，因为ArrayList需要移动数据**：ArrayList的新增和删除，就是数组的新增和删除，而LinkedList与链表一致
     {0}. **ArrayList的空间浪费主要体现在list列表的结尾需要预留一定的容量空间，而LinkedList的空间花费则体现在他们的每一个元素都需要消耗相当的空间**：因为ArrayList空间的增长率为1.5倍，那么，最后很可能会预留一部分空间没有被用到，继而造成浪费，对于LinkedList，犹豫每一个节点都需要额外的指针，所以导致空间的浪费。
 
@@ -184,9 +184,47 @@
 
     ```
     -Xmx: 最大堆大小
-    -Xms: 初始堆大小
+    -Xms: 初始堆大小也是最小内存值
     -Xmn: 年轻代大小
     -XXSurvivorRatio: 年轻代中Eden区与Survivor区的大小比值
     ```
 
-23. ​
+23. JSP
+
+    {0}. JSP分页代码中，先取得总记录数，得到总页数，再取得所有的记录，最后显示本页的数据
+
+24. Java的关键字包括：
+
+    {0}. abstract, assert, boolean, byte, break, case, catch, char, class, const, continue, default, do, double, else, extends, enum, final, finally, float, for, goto, if, implements, import, instanceof, int, interface, long, native, new, package, private, protected, public, return, short, static, strictfp, super, switch, synchronized, this, throw, throws, translent, try, void, volatile, while
+    {0}. 保留字: true, false, null
+
+25. 关于Java文件
+
+    {0}. Java.exe是Java虚拟机
+    {0}. javadoc.exe用于制作java文档
+    {0}. jdb.exe是java的调试器
+    {0}. javaprof.exe是剖析工具
+
+26. 面向对象的五大基本原则（solid）
+
+    1. 单一职责原则（SRP）：一个类，最好只做一件事情，只有一个引起它的变化。可以看做是低耦合、高内聚在面向对象原则上的引申，将**职责定义为引起变化的原因**，以提高内聚性来减少引起变化的原因
+    2. 开放封闭原则（OCP）：软件实体应该是可拓展的、而不可修改的，也就是说，对**拓展开放**，对**修改封闭**
+    3. 里氏Liskov替换原则（LSP）：**子类必须能够替换其基类**。体现为对继承机制的约束规范，只有子类能够替换基类时，才能保证系统在运行期内识别子类，这是保证继承复用的基础
+    4. 依赖倒置原则（DIP）：依赖于抽象。具体而言为高层模块不依赖于底层模块，二者都同依赖于抽象；抽象不依赖于具体，具体依赖于抽象
+    5. 接口隔离原则（ISP）：**使用多个小的专门的接口，而不是使用一个大的总接口**
+
+27. 常量对象不能修改，**但是静态成员变量需要初始化，并且可以修改（例如常常利用静态成员变量统计某个函数的调用次数）**。
+
+28. 类的初始化顺序：
+
+    {0}. 初始化**父类**中的**静态成员变量**和**静态代码块**
+    {0}. **初始化**子类**中的**静态成员变量**和**静态代码块
+    {0}. 初始化**父类**中的**普通成员变量**和**代码块**，再执行**父类中的构造方法** 
+    {0}. **初始化**子类**中的**普通成员变量**和**代码块**，再执行**子类中的构造方法**
+
+29. 方法的重写（override）**两同、两小、一大原则**：
+
+    {0}. 方法名相同，参数类型相同
+    {0}. 子类返回类型小于等于父类方法返回类型
+    {0}. 子类抛出异常小于等于父类方法抛出异常
+    {0}. 子类访问权限大于等于父类方法访问权限
