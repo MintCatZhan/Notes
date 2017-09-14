@@ -780,4 +780,86 @@
     }
     ```
 
-25. ​
+25. ​输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。
+
+    ```java
+    // 将二叉搜索树转化为排序的双向链表，其实就是讲二叉树进行中序遍历，在二叉搜索树中这样能够保证得到一个排序后的结果，进而，将指针进行变换即可
+    public class Solution {
+        public TreeNode Convert(TreeNode pRootOfTree) {
+            if (pRootOfTree == null) {
+                return null;
+            }
+            
+            if (pRootOfTree.left == null && pRootOfTree.right == null) {
+                return pRootOfTree;
+            }
+            
+            // 得到左边已编程双向链表的结果
+            TreeNode left = Convert(pRootOfTree.left);
+            TreeNode p = left;
+            // 得到左子树最右节点
+            while (p != null && p.right != null) {
+                p = p.right;
+            }
+            // 如果左子树不为空，将root添加到左子树末尾
+            if (left != null) {
+                p.right = pRootOfTree;
+                pRootOfTree.left = p;
+            }
+            // 处理右子树
+            TreeNode right = Convert(pRootOfTree.right);
+            if (right != null) {
+                pRootOfTree.right = right;
+                right.left = pRootOfTree;
+            }
+            
+            return left != null ? left : pRootOfTree;
+        }
+    }
+    ```
+
+26. 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。
+
+    ```java
+    public class Solution {
+        public int MoreThanHalfNum_Solution(int [] array) {
+            if (array == null || array.length == 0) {
+                return 0;
+            }
+            
+            int times = 1;
+            int result = array[0];
+            for (int i = 1; i < array.length; i++) {
+                if (times == 0) {
+                    result = array[i];
+                    times = 1;
+                }else if (array[i] == result) {
+                    times++;
+                } else {
+                    times--;
+                }
+            }
+            
+            if (CheckMoreThanHalf(array, result)){
+                return result;
+            } else {
+                return 0;
+            }
+        }
+        
+        public boolean CheckMoreThanHalf (int[] array, int number) {
+            int times = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] == number) {
+                    times++;
+                }
+            }
+            if (times * 2 <= array.length) {
+                return false;
+            }
+            return true;
+        }
+    }
+    ```
+
+27. ​

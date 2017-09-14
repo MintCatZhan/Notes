@@ -188,4 +188,3 @@
     - 声明为Error的，是严重错误，比如系统崩溃、虚拟机错误、动态链接失败等，这些错误无法恢复或者不可能捕获，将直接导致应用程序中断，Error不需要捕捉
 
 34. Collections![Screen Shot 2017-09-12 at 3.05.37 pm](https://ws2.sinaimg.cn/large/006tKfTcgy1fjgp8tbt2jj30uw0imack.jpg)
-
