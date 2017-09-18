@@ -72,12 +72,12 @@
 
 10. Java类成员的访问控制权限：public > protected > default > private
 
-   |        | private | default | protected | public |
-   | :----: | :-----: | :-----: | :-------: | :----: |
-   |  同一类   |    Y    |    Y    |     Y     |   Y    |
-   | 同一包中的类 |         |    Y    |     Y     |   Y    |
-   |   子类   |         |         |     Y     |   Y    |
-   | 其他包中的类 |         |         |           |   Y    |
+  |        | private | default | protected | public |
+  | :----: | :-----: | :-----: | :-------: | :----: |
+  |  同一类   |    Y    |    Y    |     Y     |   Y    |
+  | 同一包中的类 |         |    Y    |     Y     |   Y    |
+  |   子类   |         |         |     Y     |   Y    |
+  | 其他包中的类 |         |         |           |   Y    |
 
 11. `public Method[] getDeclaredMethods()`返回类或接口声明的所有方法，包括public, protected, default (package) 访问和private方法的Method对象，但不包括继承的方法。当然也包括它所实现接口的方法。`public Method[] getMethods()`返回类的所有public方法，包括其继承类的公用方法，当然也包括它所实现接口的方法。
 
@@ -97,3 +97,39 @@
     - 抽象类中的抽象方法的访问类型可以是public，protected和（默认类型,虽然eclipse下不报错，但应该也不行），但接口中的抽象方法只能是public类型的，并且默认即为public abstract类型。
     - 抽象类中可以包含静态方法，接口中不能包含静态方法
     - 抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任意，但接口中定义的变量只能是public static final类型，并且默认即为public static final类型。
+
+13. 自动拆装箱(自动拆装箱JDK需在1.5上）
+
+    - 基本型和基本型封装型进行“==”运算符的比较，基本型封装型将会自动拆箱变为基本型后再进行比较，因此Integer(0)会自动拆箱为int类型再进行比较，显然返回true；
+
+    - 两个Integer类型进行“==”比较，如果其值在-128至127，那么返回true，否则返回false, 这跟Integer.valueOf()的缓冲对象有关，这里不进行赘述。
+
+    - 两个基本型的封装型进行equals()比较，首先equals()会比较类型，如果类型相同，则继续比较值，如果值也相同，返回true
+
+    - 基本型封装类型调用equals(),但是参数是基本类型，这时候，先会进行自动装箱，基本型转换为其封装类型，再进行3中的比较。
+
+    - ```java
+      int a=257;
+
+      Integer b=257;
+
+      Integer c=257;
+
+      Integer b2=57;
+
+      Integer c2=57;
+
+      System.out.println(a==b); // true
+
+      //System.out.println(a.equals(b));  编译出错，基本型不能调用equals()
+
+      System.out.println(b.equals(257.0)); // false
+
+      System.out.println(b==c); // false
+
+      System.out.println(b2==c2); // true
+      ```
+
+14. 在一个子类被创建的时候，首先会在内存中创建一个父类对象，然后在父类对象外部放上子类独有的属性，两者合起来形成一个子类的对象。所以所谓的**继承使子类拥有父类所有的属性和方法**其实可以这样理解，<u>子类对象确实拥有父类对象中所有的属性和方法，但是**父类对象中的私有属性和方法**，**子类是无法访问**到的</u>，只是拥有，但不能使用。就像有些东西你可能拥有，但是你并不能使用。所以子类对象是绝对大于父类对象的，所谓的子类对象只能继承父类非私有的属性及方法的说法是错误的。可以继承，只是无法访问到而已。
+
+15. ​
